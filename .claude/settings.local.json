@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm --version)",
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(pkill -f \"taro build\")",
+      "Bash(pnpm --filter @menu/client add -D @tarojs/webpack5-runner)",
+      "Bash(pnpm build:client)",
+      "Bash(pnpm --filter @menu/client add -D @babel/preset-react @babel/core)",
+      "Bash(pkill -f \"nest start\")",
+      "Bash(mkdir -p apps)",
+      "Bash(mv packages/server apps/)",
+      "Bash(mv packages/client apps/)",
+      "Bash(pnpm install *)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s http://localhost:3000/api/menu/history)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(pnpm --filter @menu/miniapp build:weapp)",
+      "Bash(node *)"
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+<view class="page" wx:if="{{!loading}}">
+  <!-- 分类标签 -->
+  <scroll-view class="cat-bar" scroll-x="true" wx:if="{{categories.length}}">
+    <view
+      wx:for="{{categories}}"
+      wx:key="category_id"
+      class="cat-pill {{activeCat === index ? 'active' : ''}}"
+      data-index="{{index}}"
+      bindtap="switchCat"
+    >
+      {{item.translated_name || item.original_name}}
+      <text class="cat-count">{{item.count}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 菜品列表 -->
+  <view class="items" wx:if="{{categories[activeCat]}}">
+    <view
+      wx:for="{{categories[activeCat].items}}"
+      wx:key="item_id"
+      wx:for-item="dish"
+      class="dish-card"
+    >
+      <view class="dish-head" data-id="{{dish.item_id}}" bindtap="toggleExpand">
+        <view class="dish-img">🍽️</view>
+        <view class="dish-info">
+          <view class="dish-names">
+            <text class="dish-name-tr">{{dish.translated_name || dish.original_name}}</text>
+            <text class="spice" wx:if="{{dish.spice_level > 0}}">🌶️{{dish.spice_level}}</text>
+          </view>
+          <text class="dish-name-orig">{{dish.original_name}}</text>
+          <view class="dish-meta">
+            <text class="price">¥{{dish.cny_price}}</text>
+            <text class="price-orig">{{dish.price}} {{dish.currency}}</text>
+            <text class="conf" wx:if="{{dish.confidence_score}}">AI {{dish.confidence_score}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 展开详情 -->
+      <view class="dish-detail" wx:if="{{expanded[dish.item_id]}}">
+        <view class="detail-row" wx:if="{{dish.explanation_zh}}">
+          <text class="detail-label">说明</text>
+          <text class="detail-text">{{dish.explanation_zh}}</text>
+        </view>
+        <view class="detail-row" wx:if="{{dish.translated_description}}">
+          <text class="detail-label">描述</text>
+          <text class="detail-text">{{dish.translated_description}}</text>
+        </view>
+        <view class="detail-row" wx:if="{{dish.ingredients.length}}">
+          <text class="detail-label">食材</text>
+          <text class="detail-text">{{dish.ingredients}}</text>
+        </view>
+        <view class="detail-row" wx:if="{{dish.allergens.length}}">
+          <text class="detail-label">过敏原</text>
+          <view class="tags">
+            <text class="tag warn" wx:for="{{dish.allergens}}" wx:key="name" wx:for-item="al">
+              {{al.name}}
+            </text>
+          </view>
+        </view>
+        <view class="detail-row" wx:if="{{dish.risk_notes.length}}">
+          <text class="detail-label">提示</text>
+          <view class="tags">
+            <text class="tag risk" wx:for="{{dish.risk_notes}}" wx:key="*this" wx:for-item="rn">
+              {{rn}}
+            </text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 加减按钮 -->
+      <view class="qty-bar">
+        <view class="taste-tags">
+          <text class="ttag" wx:for="{{dish.taste_tags}}" wx:key="*this" wx:for-item="tt">{{tt}}</text>
+        </view>
+        <view class="qty-ctrl">
+          <view class="qty-btn minus" wx:if="{{quantities[dish.item_id] > 0}}" data-item="{{dish}}" bindtap="dec">−</view>
+          <text class="qty-num" wx:if="{{quantities[dish.item_id] > 0}}">{{quantities[dish.item_id]}}</text>
+          <view class="qty-btn plus" data-item="{{dish}}" bindtap="inc">+</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部悬浮栏 -->
+  <view class="footer" wx:if="{{selectedCount > 0}}">
+    <view class="footer-info">
+      <view class="badge">{{selectedCount}}</view>
+      <view class="footer-text">
+        <text class="footer-total">¥{{selectedTotalCny}}</text>
+        <text class="footer-hint">已选 {{selectedCount}} 份</text>
+      </view>
+    </view>
+    <view class="footer-btn" bindtap="goOrder">生成点菜单</view>
+  </view>
+</view>
+
+<view class="loading-wrap" wx:else>
+  <text>加载中...</text>
+</view>

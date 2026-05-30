@@ -1,0 +1,106 @@
+.pipeline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 800px) {
+  .pipeline {
+    grid-template-columns: 1fr;
+  }
+}
+
+.upload-section h2,
+.results h2 {
+  font-size: 16px;
+  color: #58a6ff;
+  margin-bottom: 12px;
+}
+
+.upload-area {
+  border: 2px dashed #30363d;
+  border-radius: 8px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.upload-area:hover {
+  border-color: #58a6ff;
+}
+
+.upload-area p {
+  color: #8b949e;
+}
+
+.preview {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.run-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  background: #238636;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.run-btn:disabled {
+  background: #30363d;
+  cursor: not-allowed;
+}
+
+.run-btn:hover:not(:disabled) {
+  background: #2ea043;
+}
+
+.results {
+  overflow: auto;
+}
+
+.step {
+  margin-bottom: 8px;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  background: #161b22;
+}
+
+.step summary {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step summary:hover {
+  color: #58a6ff;
+}
+
+.time {
+  color: #7ee787;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.step pre {
+  padding: 12px;
+  font-size: 12px;
+  overflow: auto;
+  max-height: 400px;
+  border-top: 1px solid #30363d;
+  white-space: pre-wrap;
+  word-break: break-all;
+}

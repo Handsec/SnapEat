@@ -1,0 +1,9 @@
+{
+  "desc": "Sitemap for MenuAI mini program",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

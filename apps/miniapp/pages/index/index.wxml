@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="hero">
+    <text class="title brand">MenuAI</text>
+    <text class="subtitle">拍菜单 · 看懂它 · 点对它</text>
+  </view>
+
+  <view class="card">
+    <text class="step-num">1</text>
+    <view class="step-text">
+      <text class="step-title">拍照菜单</text>
+      <text class="step-desc">支持中/英/日/韩/法/意等</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="step-num">2</text>
+    <view class="step-text">
+      <text class="step-title">AI 识别 + 翻译</text>
+      <text class="step-desc">结构化菜品 + 双语展示</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="step-num">3</text>
+    <view class="step-text">
+      <text class="step-title">点菜单给服务员</text>
+      <text class="step-desc">大字体卡片 · 一目了然</text>
+    </view>
+  </view>
+
+  <button class="cta" bindtap="onScan" loading="{{scanning}}" disabled="{{scanning}}">
+    {{scanning ? '识别中...' : '开始拍照'}}
+  </button>
+  <view class="history-entry" bindtap="goHistory">
+    <text>查看历史记录 ›</text>
+  </view>
+</view>

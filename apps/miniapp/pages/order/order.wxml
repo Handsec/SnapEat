@@ -1,0 +1,66 @@
+<view class="page" wx:if="{{!loading && order}}">
+
+  <!-- 大字体模式 -->
+  <view class="big-mode" wx:if="{{bigMode}}">
+    <view class="big-card">
+      <text class="big-title">Order / 点单</text>
+      <view class="big-item" wx:for="{{order.items}}" wx:key="original_name">
+        <text class="big-name">{{item.quantity}} × {{item.original_name}}</text>
+        <text class="big-note" wx:if="{{item.note}}">({{item.note}})</text>
+      </view>
+      <view class="big-total">Total ≈ {{order.total_original}} {{order.currency}}</view>
+    </view>
+    <view class="big-actions">
+      <view class="action-btn ghost" bindtap="toggleBig">退出大字体</view>
+    </view>
+  </view>
+
+  <!-- 普通模式 -->
+  <view class="normal-mode" wx:else>
+    <!-- 服务员展示卡 -->
+    <view class="sheet waiter">
+      <view class="sheet-label">给服务员看 · For the waiter</view>
+      <text class="sheet-text">{{order.waiter_text}}</text>
+    </view>
+
+    <!-- 中文对照卡 -->
+    <view class="sheet chinese">
+      <view class="sheet-label">中文对照</view>
+      <text class="sheet-text">{{order.chinese_text}}</text>
+    </view>
+
+    <!-- 明细 -->
+    <view class="detail-list">
+      <view class="detail-item" wx:for="{{order.items}}" wx:key="original_name">
+        <view class="di-left">
+          <text class="di-name">{{item.translated_name}}</text>
+          <text class="di-orig">{{item.original_name}}</text>
+          <text class="di-note" wx:if="{{item.note}}">备注：{{item.note}}</text>
+        </view>
+        <view class="di-right">
+          <text class="di-qty">×{{item.quantity}}</text>
+          <text class="di-price">{{item.unit_price}} {{order.currency}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 合计 -->
+    <view class="total-bar">
+      <text>合计</text>
+      <view class="total-nums">
+        <text class="total-cny">¥{{order.total_cny}}</text>
+        <text class="total-orig">{{order.total_original}} {{order.currency}}</text>
+      </view>
+    </view>
+
+    <!-- 操作 -->
+    <view class="actions">
+      <view class="action-btn primary" bindtap="toggleBig">大字体模式</view>
+      <view class="action-btn ghost" bindtap="goBack">返回修改</view>
+    </view>
+  </view>
+</view>
+
+<view class="loading-wrap" wx:if="{{loading}}">
+  <text>生成中...</text>
+</view>

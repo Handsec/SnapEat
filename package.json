@@ -1,0 +1,17 @@
+{
+  "name": "menu-app",
+  "private": true,
+  "scripts": {
+    "dev:api": "pnpm --filter @menu/api dev",
+    "dev:miniapp": "pnpm --filter @menu/miniapp dev:weapp",
+    "dev:playground": "pnpm --filter @menu/playground dev",
+    "build:api": "pnpm --filter @menu/api build",
+    "build:miniapp": "pnpm --filter @menu/miniapp build:weapp",
+    "build:shared": "pnpm --filter @menu/shared-types build",
+    "lint": "pnpm -r lint",
+    "db:migrate": "pnpm --filter @menu/api db:migrate",
+    "db:studio": "pnpm --filter @menu/api db:studio",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down"
+  }
+}

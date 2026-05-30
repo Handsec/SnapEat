@@ -1,0 +1,26 @@
+<view class="page">
+  <view wx:if="{{!loading && items.length === 0}}" class="empty">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">还没有识别记录</text>
+  </view>
+
+  <view class="list" wx:if="{{items.length}}">
+    <view
+      class="hist-card"
+      wx:for="{{items}}"
+      wx:key="menu_id"
+      data-id="{{item.menu_id}}"
+      bindtap="openMenu"
+    >
+      <view class="hist-thumb">🍜</view>
+      <view class="hist-info">
+        <view class="hist-top">
+          <text class="hist-lang">{{item.language}}</text>
+          <text class="hist-count">{{item.item_count}} 道菜</text>
+        </view>
+        <text class="hist-time">{{item.time_label}}</text>
+      </view>
+      <view class="hist-del" catchtap="deleteMenu" data-id="{{item.menu_id}}">删除</view>
+    </view>
+  </view>
+</view>

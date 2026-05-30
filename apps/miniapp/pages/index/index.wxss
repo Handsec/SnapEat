@@ -1,0 +1,81 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 0 40rpx;
+}
+
+.title {
+  font-size: 80rpx;
+  font-weight: 900;
+  letter-spacing: 2rpx;
+}
+
+.subtitle {
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  color: #888;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+
+.step-num {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 32rpx;
+  background: linear-gradient(135deg, #f05a28, #ff8a4a);
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 700;
+  text-align: center;
+  line-height: 64rpx;
+  margin-right: 24rpx;
+}
+
+.step-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.step-desc {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #888;
+}
+
+.cta {
+  margin-top: 60rpx;
+  background: linear-gradient(135deg, #f05a28, #ff8a4a);
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: 600;
+  border-radius: 32rpx;
+  padding: 28rpx 0;
+  border: none;
+  box-shadow: 0 8rpx 24rpx rgba(240, 90, 40, 0.3);
+}
+
+.cta::after {
+  border: none;
+}
+
+.history-entry {
+  margin-top: 32rpx;
+  text-align: center;
+  color: #888;
+  font-size: 28rpx;
+}

@@ -1,0 +1,16 @@
+page {
+  background: #faf9f7;
+  color: #1a1a1a;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+.container {
+  padding: 32rpx;
+}
+
+.brand {
+  color: #f05a28;
+  font-weight: 700;
+}

@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model MenuScan {
+  id              String   @id @default(cuid())
+  imageUrl        String   @map("image_url")
+  ocrRawText      String?  @map("ocr_raw_text")
+  structuredJson  Json     @map("structured_json")
+  language        String   @default("unknown")
+  currency        String   @default("EUR")
+  itemCount       Int      @default(0) @map("item_count")
+  processingTimeMs Int?    @map("processing_time_ms")
+  modelUsed       String?  @map("model_used")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  orderSheets OrderSheet[]
+
+  @@map("menu_scans")
+}
+
+model OrderSheet {
+  id            String   @id @default(cuid())
+  menuScanId    String   @map("menu_scan_id")
+  menuScan      MenuScan @relation(fields: [menuScanId], references: [id])
+  itemsJson     Json     @map("items_json")
+  waiterText    String   @map("waiter_text")
+  chineseText   String   @map("chinese_text")
+  totalCny      Float    @default(0) @map("total_cny")
+  totalOriginal Float    @default(0) @map("total_original")
+  currency      String   @default("EUR")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@map("order_sheets")
+}

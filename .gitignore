@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+.taro-cache/
+coverage/
+
+# env & secrets
+.env
+.env.local
+*.local
+
+# logs
+*.log
+
+# OS files
+.DS_Store
+
+# WeChat devtools private config
+project.private.config.json
+
+# IDE
+.vscode/
+.idea/
